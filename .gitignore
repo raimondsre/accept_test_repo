@@ -1,0 +1,9 @@
+#Don't include any logs generated after NextFlow runs
+/.nextflow
+/.nextflow.log*
+/work
+#Don't include Python venv files, these will be created using the init.sh
+/venv
+#Don't include any files generated after nextflow run, bet
+/output/files/*
+/output/output.txt

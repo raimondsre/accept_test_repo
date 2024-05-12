@@ -7,3 +7,5 @@
 #Don't include any files generated after nextflow run, bet
 /output/files/*
 /output/output.txt
+#IDE files
+/.idea

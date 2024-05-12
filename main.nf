@@ -2,6 +2,8 @@
 project_dir = projectDir
 
 process writeToFile {
+    executor = 'local'
+
     input:
     file 'input'
 
@@ -39,7 +41,7 @@ workflow {
 }
 
 workflow.onComplete {
-    def proc = "./completed.sh".execute()
+    def proc = "${project_dir}/completed.sh".execute()
     def b = new StringBuffer()
     proc.consumeProcessErrorStream(b)
     println proc.text
@@ -47,7 +49,7 @@ workflow.onComplete {
 }
 
 workflow.onError {
-    def proc = "./failed.sh".execute()
+    def proc = "${project_dir}/failed.sh".execute()
     def b = new StringBuffer()
     proc.consumeProcessErrorStream(b)
     println proc.text

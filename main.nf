@@ -3,7 +3,7 @@ project_dir = projectDir
 
 process writeToFile {
     executor = 'local'
-    maxForks = 1
+//     maxForks = 1
 
     input:
     file 'input'
@@ -16,7 +16,7 @@ process writeToFile {
 
 process demo {
     executor = 'local'
-    maxForks = 1
+//     maxForks = 1
 
     output:
     stdout
@@ -28,7 +28,7 @@ process demo {
 }
 
 workflow {
-    demo | collect | writeToFile
+    demo writeToFile
 }
 
 workflow.onComplete {

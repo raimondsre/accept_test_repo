@@ -1,6 +1,8 @@
 #!/usr/bin/env nextflow
 project_dir = projectDir
 
+def proc = "${project_dir}/started.sh".execute()
+
 process writeToFile {
     executor = 'local'
 //     maxForks = 1

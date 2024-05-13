@@ -41,6 +41,7 @@ workflow {
 }
 
 workflow.onComplete {
+    println "Triggering onComplete handler"
     def proc = "${project_dir}/completed.sh".execute()
     def b = new StringBuffer()
     proc.consumeProcessErrorStream(b)
@@ -49,6 +50,7 @@ workflow.onComplete {
 }
 
 workflow.onError {
+    println "Triggering onError handler"
     def proc = "${project_dir}/failed.sh".execute()
     def b = new StringBuffer()
     proc.consumeProcessErrorStream(b)

@@ -6,6 +6,6 @@
 /venv
 #Don't include any files generated after nextflow run, bet
 /output/files/*
-/output/output.txt
+/output/output.json
 #IDE files
 /.idea

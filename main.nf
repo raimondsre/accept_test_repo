@@ -41,7 +41,9 @@ workflow {
 }
 
 workflow.onComplete {
-    println "Triggering onComplete handler"
+    println "Pipeline completed at: $workflow.complete"
+    println "Execution status: ${ workflow.success ? 'OK' : 'failed' }"
+
     def proc = "${project_dir}/completed.sh".execute()
     def b = new StringBuffer()
     proc.consumeProcessErrorStream(b)
@@ -50,7 +52,8 @@ workflow.onComplete {
 }
 
 workflow.onError {
-    println "Triggering onError handler"
+    println "Error: Pipeline execution stopped with the following message: ${workflow.errorMessage}"
+
     def proc = "${project_dir}/failed.sh".execute()
     def b = new StringBuffer()
     proc.consumeProcessErrorStream(b)

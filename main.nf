@@ -37,7 +37,7 @@ process completed{
 
 
 workflow {
-    demo | writeToFile
+    demo | collect | writeToFile
 }
 
 workflow.onComplete {

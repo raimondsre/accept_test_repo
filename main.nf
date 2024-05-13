@@ -9,7 +9,7 @@ process writeToFile {
 
     script:
     """
-    cat ${input} > ${projectDir}/output/output.txt
+    cat ${input} > ${projectDir}/output/output.json
     """
 }
 

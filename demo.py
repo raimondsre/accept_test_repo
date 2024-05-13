@@ -8,6 +8,11 @@ import matplotlib.pyplot as plt
 path = sys.argv[1]
 
 
+def read_file(file_path):
+    with open(file_path, 'r') as file:
+        return file.read()
+
+
 # Function to calculate the sum of field_a.value and field_b.value
 
 
@@ -69,6 +74,8 @@ def generate_line_chart_data(num_points, lang):
 
 
 def generate_test_msword(input_json, value, lang):
+    text = read_file(path + input_json["field_user_text"]["filename"])
+
     a = input_json["field_a"]["value"]
     b = input_json["field_b"]["value"]
 
@@ -77,12 +84,16 @@ def generate_test_msword(input_json, value, lang):
 
     if lang == "lv":
         doc.add_paragraph("Mēs veicāc summas aprēķiņu: " + str(a) + "+" + str(b) + "=" + str(value))
+        doc.add_paragraph("Jūs iesniedzāt šādu teksta dokumentu: ")
+        doc.add_paragraph(text)
         doc.save(path + "/output/files/my_word_lv.docx")
-        return "files/my_word_lv.docx"
+        return "/output/files/my_word_lv.docx"
     else:
         doc.add_paragraph("We calculated a sum: " + str(a) + "+" + str(b) + "=" + str(value))
+        doc.add_paragraph("You have provided the text document below: ")
+        doc.add_paragraph(text)
         doc.save(path + "/output/files/my_word_en.docx")
-        return "files/my_word_en.docx"
+        return "/output/files/my_word_en.docx"
 
 
 def generate_test_chart(input_json, sum, lang):
@@ -110,7 +121,7 @@ def generate_test_chart(input_json, sum, lang):
 
     # Save the chart as a PNG file
     plt.savefig(path + "/output/files/" + lang + "_chart.png")
-    return "files/" + lang + "_chart.png"
+    return "/output/files/" + lang + "_chart.png"
 
 
 # Read input JSON file

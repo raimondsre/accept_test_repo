@@ -4,5 +4,9 @@
   },
   "field_b": {
     "value": 22
+  },
+   "field_user_text": {
+    "filename": "/input/files/4ac27abb-e1a3-470c-837a-f5454bf127cd.txt"
   }
+
 }

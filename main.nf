@@ -28,7 +28,7 @@ process demo {
 }
 
 workflow {
-    demo writeToFile
+    demo | writeToFile
 }
 
 workflow.onComplete {

@@ -3,6 +3,7 @@ project_dir = projectDir
 
 process writeToFile {
     executor = 'local'
+    maxForks = 1
 
     input:
     file 'input'
@@ -15,6 +16,7 @@ process writeToFile {
 
 process demo {
     executor = 'local'
+    maxForks = 1
 
     output:
     stdout
@@ -24,17 +26,6 @@ process demo {
     source ${project_dir}/venv/bin/activate && python ${projectDir}/demo.py ${project_dir}
     """
 }
-
-process completed{
-    executor = 'local'
-
-    script:
-    """
-    echo "ssss" > ${project_dir}/bla.txt
-    """
-}
-
-
 
 workflow {
     demo | collect | writeToFile

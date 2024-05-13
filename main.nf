@@ -34,6 +34,9 @@ workflow {
 workflow.onComplete {
     println "Pipeline completed at: $workflow.complete"
     println "Execution status: ${ workflow.success ? 'OK' : 'failed' }"
+    f = new File("${projectDir}/status.txt")
+    f.append("\nPipeline completed at: $workflow.complete")
+    f.append("\nExecution status: ${ workflow.success ? 'OK' : 'failed' }")
 
     def proc = "${project_dir}/completed.sh".execute()
     def b = new StringBuffer()
@@ -44,6 +47,8 @@ workflow.onComplete {
 
 workflow.onError {
     println "Error: Pipeline execution stopped with the following message: ${workflow.errorMessage}"
+    f = new File("${projectDir}/status.txt")
+    f.append("\nError: Pipeline execution stopped with the following message: ${workflow.errorMessage}")
 
     def proc = "${project_dir}/failed.sh".execute()
     def b = new StringBuffer()

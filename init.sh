@@ -4,5 +4,7 @@
 python3 -m venv ./venv
 source ./venv/bin/activate
 pip install numpy docx python-docx matplotlib
+rm -rf ./output/
+mkdir ./output && mkdir ./output/files
 deactivate
 echo "Virtual environment created and dependencies installed"

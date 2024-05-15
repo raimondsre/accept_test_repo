@@ -1,6 +1,7 @@
 #!/usr/bin/env nextflow
 project_dir = projectDir
 
+//Run this script to notify the platform that task execution has started
 def startProc = "${project_dir}/started.sh".execute()
 
 process writeToFile {

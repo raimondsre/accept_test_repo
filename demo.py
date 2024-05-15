@@ -136,7 +136,7 @@ output_data = {
     "values": {
         "sum": sum_value
     },
-    "charts": {
+    "chartjs": {
         "myLine_lv": generate_line_chart_data(sum_value, 'lv'),
         "myLine_en": generate_line_chart_data(sum_value, 'en')
     },

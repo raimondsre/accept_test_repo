@@ -62,11 +62,14 @@ def generate_line_chart_data(num_points, lang):
                     "text": label
                 }
             },
-            'scales': {
-                'xAxes': [{
-                    'type': 'linear',
-                    'position': 'bottom'
-                }]
+            "scales": {
+                "x": {
+                    "type": "linear",
+                    "position": "bottom"
+                },
+                "y": {
+                    "type": "linear"
+                }
             }
         }
     }

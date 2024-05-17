@@ -119,13 +119,13 @@ def generate_test_dt(input_json, lang):
         ],
         'data': [
             [input_json["field_a"]["value"], '+', input_json["field_b"]["value"],
-             input_json["field_a"]["value"] + input_json["field_bs"]["value"]],
+             input_json["field_a"]["value"] + input_json["field_b"]["value"]],
             [input_json["field_a"]["value"], '-', input_json["field_b"]["value"],
              input_json["field_a"]["value"] - input_json["field_bs"]["value"]],
             [input_json["field_a"]["value"], '*', input_json["field_b"]["value"],
              input_json["field_a"]["value"] * input_json["field_bs"]["value"]],
             [input_json["field_a"]["value"], '/', input_json["field_b"]["value"],
-             round(input_json["field_a"]["value"] / input_json["field_bs"]["value"] * 100) / 100],
+             round(input_json["field_a"]["value"] / input_json["field_b"]["value"] * 100) / 100],
         ]
     }
     return dt

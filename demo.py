@@ -99,6 +99,38 @@ def generate_test_msword(input_json, value, lang):
         return "/output/files/my_word_en.docx"
 
 
+def generate_test_dt(input_json, lang):
+    if lang == 'lv':
+        oper_label = "Operācija"
+        res_label = 'Rezultāts'
+        caption = "Aprēķini"
+    else:
+        oper_label = "Operation"
+        res_label = "Result"
+        caption = "Calculations"
+
+    dt = {
+        'caption': caption,
+        'columns': [
+            {'title': 'A'},
+            {'title': oper_label},
+            {'title': 'B'},
+            {'title': res_label}
+        ],
+        'data': [
+            [input_json["field_a"]["value"], '+', input_json["field_b"]["value"],
+             input_json["field_a"]["value"] + input_json["field_bs"]["value"]],
+            [input_json["field_a"]["value"], '-', input_json["field_b"]["value"],
+             input_json["field_a"]["value"] - input_json["field_bs"]["value"]],
+            [input_json["field_a"]["value"], '*', input_json["field_b"]["value"],
+             input_json["field_a"]["value"] * input_json["field_bs"]["value"]],
+            [input_json["field_a"]["value"], '/', input_json["field_b"]["value"],
+             round(input_json["field_a"]["value"] / input_json["field_bs"]["value"] * 100) / 100],
+        ]
+    }
+    return dt
+
+
 def generate_test_chart(input_json, sum, lang):
     a = input_json["field_a"]["value"]
     b = input_json["field_b"]["value"]
@@ -138,6 +170,10 @@ sum_value = calculate_sum(input_data)
 output_data = {
     "values": {
         "sum": sum_value
+    },
+    "datatables": {
+        "tableLv": generate_test_dt(input_data, 'lv'),
+        "tableEn": generate_test_dt(input_data, 'en')
     },
     "chartjs": {
         "myLine_lv": generate_line_chart_data(sum_value, 'lv'),

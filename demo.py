@@ -4,6 +4,7 @@ import json
 import numpy as np
 from docx import Document
 import matplotlib.pyplot as plt
+from risk_score_chartjs import generate_risk_score_chartjs
 
 path = sys.argv[1]
 
@@ -177,7 +178,9 @@ output_data = {
     },
     "chartjs": {
         "myLine_lv": generate_line_chart_data(sum_value, 'lv'),
-        "myLine_en": generate_line_chart_data(sum_value, 'en')
+        "myLine_en": generate_line_chart_data(sum_value, 'en'),
+        "risk_lv": generate_risk_score_chartjs(score=input_data["field_a"]["value"], lang='lv'),
+        "risk_en": generate_risk_score_chartjs(score=input_data["field_a"]["value"], lang='en'),
     },
     "files": {
         "MyWord_lv": generate_test_msword(input_data, sum_value, 'lv'),

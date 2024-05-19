@@ -159,6 +159,7 @@ def generate_risk_score_chartjs(mean=50, stdDev=15, numPoints=101, score=30, lan
 
     if lang == 'lv':
 
+        title = "Poligēnā riska grafiks"
         label_low = ["Zems", "Jūsu risks ir " + str(score) + " percentiles robežās"]
         label_medium = ["Vidējs", "Jūsu risks ir " + str(score) + " percentiles robežās"]
         label_high = ["Augsts", "Jūsu risks ir " + str(score) + " percentiles robežās"]
@@ -173,7 +174,7 @@ def generate_risk_score_chartjs(mean=50, stdDev=15, numPoints=101, score=30, lan
                                               ["Mazāk indivīdiem ir", "augsts risks"])
         x_label = 'Percentile'
     else:
-
+        title = "Polygenic risk chart"
         label_low = ["Somewhat low", "Your risk is withing the " + str(score) + "th percentile"]
         label_medium = ["Medium", "Your risk is withing the " + str(score) + "th percentile"]
         label_high = ["Somewhat high", "Your risk is withing the " + str(score) + "th percentile"]
@@ -244,6 +245,16 @@ def generate_risk_score_chartjs(mean=50, stdDev=15, numPoints=101, score=30, lan
             'plugins': {
                 'legend': {
                     'display': False  # Turn off legend display
+                },
+                'title': {
+                    'display': True,
+                    'text': title,
+                    'font': {
+                        'size': 16,
+                        'weight': 'bold'
+                    },
+                    'color': '#000',
+                    'padding': 10
                 },
                 'annotation': {
                     'annotations': {

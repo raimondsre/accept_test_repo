@@ -7,3 +7,11 @@ Pipeline completed at: 2024-05-19T17:37:52.282990+03:00
 Execution status: OK
 Pipeline completed at: 2024-05-19T17:47:23.281806+03:00
 Execution status: OK
+Error: Pipeline execution stopped with the following message: Traceback (most recent call last):
+  File "/Users/kampars/Documents/Projects/PycharmProjects/NextFlow/demo.py", line 182, in <module>
+    "risk_lv": generate_risk_score_chartjs(score=input_data["field_a"]["value"], lang='lv'),
+  File "/Users/kampars/Documents/Projects/PycharmProjects/NextFlow/risk_score_chartjs.py", line 167, in generate_risk_score_chartjs
+    anotation_low = generate_annotations(-0.5, 35, color="rgba(0, 255, 0, 0.2)",
+TypeError: generate_annotations() got an unexpected keyword argument 'title'
+Pipeline completed at: 2024-05-19T18:33:04.804339+03:00
+Execution status: failed

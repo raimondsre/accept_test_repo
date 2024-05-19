@@ -43,7 +43,7 @@ def generate_annotations(start=0, end=35, color="rgba(0, 255, 0, 0.1)", text=["M
         "type": "box",
         "xMin": start,
         "xMax": end,
-        "yMin": -0.1 * maxY,
+        "yMin": -0.15 * maxY,
         "yMax": -0.04 * maxY,
         "backgroundColor": color,
         "borderWidth": 0,
@@ -54,7 +54,7 @@ def generate_annotations(start=0, end=35, color="rgba(0, 255, 0, 0.1)", text=["M
             "color": "black",
             "textAlign": "center",
             "font": {
-                "size": 14,
+                "size": 12,
                 "weight": "bold"
             }
         }
@@ -237,7 +237,7 @@ def generate_risk_score_chartjs(mean=50, stdDev=15, numPoints=101, score=30, lan
                         'offset': False
                     }
                 },
-                "y": {"beginAtZero": True, "display": False, "min": -0.1 * maxY, "max": max_yaxis}
+                "y": {"beginAtZero": True, "display": False, "min": -0.15 * maxY, "max": max_yaxis}
             },
             'plugins': {
                 'legend': {

@@ -142,6 +142,9 @@ def draw_your_score(score, low=["Somewhat low", "Your risk is withing the 0th pe
 # Generates ChartJS config for the risk score chart
 def generate_risk_score_chartjs(mean=50, stdDev=15, numPoints=101, score=30, lang='lv'):
     global maxY
+
+    score = int(score)
+
     if score > 100:
         score = 100
     if score < 0:

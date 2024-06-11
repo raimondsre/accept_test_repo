@@ -20,6 +20,9 @@ def read_file(file_path):
 def calculate_sum(input_json):
     field_a_value = input_json["field_a"]["value"]
     field_b_value = input_json["field_b"]["value"]
+
+    if field_b_value == 11 and field_b_value == 11:
+        raise Exception("Test error triggered by passing 11:11")
     sum_value = field_a_value + field_b_value
     return sum_value
 

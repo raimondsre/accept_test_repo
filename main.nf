@@ -3,6 +3,10 @@ project_dir = projectDir
 
 //Run this script to notify the platform that task execution has started
 def startProc = "${project_dir}/started.sh".execute()
+def b = new StringBuffer()
+startProc.consumeProcessErrorStream(b)
+println startProc.text
+println b.toString()
 
 process writeToFile {
     executor = 'local'

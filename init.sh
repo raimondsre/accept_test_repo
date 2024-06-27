@@ -6,13 +6,13 @@ SCRIPT_DIR=$(dirname "$(realpath "$0")")
 python3 -m venv ./venv
 source ./venv/bin/activate
 
-python "${SCRIPT_DIR}/validate.py"
+OUTPUT=$(python "${SCRIPT_DIR}/validate.py")
 EXIT_CODE=$?
 
 # Check if the Python script exited with an error
 if [ $EXIT_CODE -ne 0 ]; then
-    echo "Python script exited with an error."
-    source "${SCRIPT_DIR}/failed_320.sh"
+    echo "Python script exited with an error " $OUTPUT
+    "${SCRIPT_DIR}/failed_320.sh" "$OUTPUT"
     sleep 10
     exit $EXIT_CODE
 fi

@@ -43,7 +43,7 @@ def generate_annotations(start=0, end=35, color="rgba(0, 255, 0, 0.1)", text=["M
         "type": "box",
         "xMin": start,
         "xMax": end,
-        "yMin": -0.2 * maxY,
+        "yMin": -0.4 * maxY,
         "yMax": -0.04 * maxY,
         "backgroundColor": color,
         "borderWidth": 0,

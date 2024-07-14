@@ -50,7 +50,7 @@ def generate_annotations(start=0, end=35, color="rgba(0, 255, 0, 0.1)", text=["M
         "label": {
             "display": True,
             "content": text,
-            "position": "center",
+            "position": "top",
             "color": "black",
             "textAlign": "center",
             "font": {

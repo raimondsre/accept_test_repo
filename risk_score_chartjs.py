@@ -4,6 +4,7 @@ import numpy as np
 from scipy.stats import norm
 
 maxY = 0  # Global variable
+minYCoeff = -0.3
 
 
 # Function to generate normal distribution data
@@ -43,7 +44,7 @@ def generate_annotations(start=0, end=35, color="rgba(0, 255, 0, 0.1)", text=["M
         "type": "box",
         "xMin": start,
         "xMax": end,
-        "yMin": -0.1 * maxY,
+        "yMin": minYCoeff * maxY,
         "yMax": -0.04 * maxY,
         "backgroundColor": color,
         "borderWidth": 0,
@@ -165,13 +166,13 @@ def generate_risk_score_chartjs(mean=50, stdDev=15, numPoints=101, score=30, lan
         label_high = ["Augsts", "Jūsu risks ir " + str(score) + " percentiles robežās"]
 
         anotation_low = generate_annotations(-0.5, 35, color="rgba(0, 255, 0, 0.2)",
-                                             text=["Mazāk indivīdiem ir", "pazemināts risks"])
+                                             title=["Mazāk indivīdiem ir", "pazemināts risks"])
 
         anotation_medium = generate_annotations(35, 65, color="rgba(255, 255, 0, 0.2)",
-                                                text=["Vairumam indivīdu ir", "vidējs risks"])
+                                                title=["Vairumam indivīdu ir", "vidējs risks"])
 
         anotation_high = generate_annotations(65, 100, color="rgba(255, 0, 0, 0.2)",
-                                              text=["Mazāk indivīdiem ir", "augsts risks"])
+                                              title=["Mazāk indivīdiem ir", "augsts risks"])
         x_label = 'Percentile'
     else:
         title = "Polygenic risk chart"
@@ -240,7 +241,7 @@ def generate_risk_score_chartjs(mean=50, stdDev=15, numPoints=101, score=30, lan
                         'offset': False
                     }
                 },
-                "y": {"beginAtZero": True, "display": False, "min": -0.2 * maxY, "max": max_yaxis}
+                "y": {"beginAtZero": True, "display": False, "min": minYCoeff * maxY, "max": max_yaxis}
             },
             'plugins': {
                 'legend': {

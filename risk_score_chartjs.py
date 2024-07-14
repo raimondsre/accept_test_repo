@@ -54,7 +54,7 @@ def generate_annotations(start=0, end=35, color="rgba(0, 255, 0, 0.1)", text=["M
             "color": "black",
             "textAlign": "center",
             "font": {
-                "size": 12,
+                "size": 10,
                 "weight": "bold"
             }
         }

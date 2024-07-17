@@ -186,13 +186,13 @@ def generate_risk_score_chartjs(mean=50, stdDev=15, numPoints=101, score=30, lan
         label_high = ["Augsts", "Jūsu risks ir " + str(score) + " percentiles robežās"]
 
         anotation_low = generate_annotations(0, 35, color="rgba(0, 255, 0, 0.2)",
-                                             text=["Mazāk indivīdiem ir", "pazemināts risks"])
+                                             text=["Mazāk indivīdiem", "ir", "pazemināts risks"])
 
         anotation_medium = generate_annotations(35, 65, color="rgba(255, 165, 0, 0.8)",
                                                 text=["Vairumam indivīdu ir", "vidējs risks"])
 
         anotation_high = generate_annotations(65, 100, color="rgba(255, 0, 0, 0.2)",
-                                              text=["Mazāk indivīdiem ir", "augsts risks"])
+                                              text=["Mazāk indivīdiem", "ir", "augsts risks"])
         x_label = 'Percentile'
     else:
         title = "Polygenic risk chart"
@@ -311,7 +311,7 @@ return gradient;}""",
                     'display': True,
                     'text': title,
                     'font': {
-                    "size": """function(context){
+                        "size": """function(context){
             let vw =  context.chart.width;
             let baseFontSize = 16; // Base font size in pixels
             let devicePixelRatio = window.devicePixelRatio || 1;

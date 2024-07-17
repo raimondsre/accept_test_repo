@@ -57,7 +57,7 @@ def generate_annotations(start=0, end=35, color="rgba(0, 255, 0, 0.1)", text=["M
                 "size": """function(context){
             let vw =  context.chart.width;
             let baseFontSize = 16; // Base font size in pixels
-            let scaledFontSize = Math.max(10, Math.min(baseFontSize * (vw / 1200), 24));
+            let scaledFontSize = Math.max(11, Math.min(baseFontSize * (vw / 1200), 24));
             return scaledFontSize;
                 }""",
                 "weight": "bold",
@@ -134,7 +134,7 @@ def draw_your_score(score, low=["c", "Your risk is withing the 0th percentile"],
                 function(context){
             let vw =  context.chart.width;
             let baseFontSize = 16; // Base font size in pixels
-            let scaledFontSize = Math.max(10, Math.min(baseFontSize * (vw / 1150), 24));
+            let scaledFontSize = Math.max(11, Math.min(baseFontSize * (vw / 1150), 24));
             return scaledFontSize;
                 }
 """
@@ -271,7 +271,7 @@ return gradient;}""",
             let vw =  context.chart.width;
     let
     baseFontSize = 16; // Base font size in pixels
-    let scaledFontSize = Math.max(10, Math.min(baseFontSize * (vw / 1500), 24));
+    let scaledFontSize = Math.max(11, Math.min(baseFontSize * (vw / 1500), 24));
     return scaledFontSize;
     }"""
                         }
@@ -302,7 +302,7 @@ return gradient;}""",
                     "size": """function(context){
             let vw =  context.chart.width;
             let baseFontSize = 16; // Base font size in pixels
-            let scaledFontSize = Math.max(10, Math.min(baseFontSize * (vw / 1150), 24));
+            let scaledFontSize = Math.max(11, Math.min(baseFontSize * (vw / 1150), 24));
             return scaledFontSize;
                 }""",
                         "weight": "bold"

@@ -236,18 +236,15 @@ def generate_risk_score_chartjs(mean=50, stdDev=15, numPoints=101, score=30, lan
     chartWidth = chartArea.right - chartArea.left;
     const
     chartHeight = chartArea.bottom - chartArea.top;
-    if (!gradient | | width != = chartWidth | | height != = chartHeight) {
+    if (!gradient || width !== chartWidth || height !== chartHeight) {
 
 
 width = chartWidth;
 height = chartHeight;
 gradient = ctx.createLinearGradient(chartArea.left, 0, chartArea.right, 0);
-gradient.addColorStop(0, 'rgba(0, 255, 0, 0.7)'); // Start
-color(green)
-gradient.addColorStop(0.5, 'rgba(255, 255, 0, 0.7)'); // Middle
-color(yellow)
-gradient.addColorStop(1, 'rgba(255, 0, 0, 0.7)'); // End
-color(red)
+gradient.addColorStop(0, 'rgba(0, 255, 0, 0.7)'); // Start color(green)
+gradient.addColorStop(0.5, 'rgba(255, 255, 0, 0.7)'); // Middle color(yellow)
+gradient.addColorStop(1, 'rgba(255, 0, 0, 0.7)'); // End color(red)
 }
 return gradient;}""",
                     "pointRadius": 0,
@@ -268,11 +265,8 @@ return gradient;}""",
                             "size": """function(context){
             let vw =  context.chart.width;
     let
-    baseFontSize = 16; // Base
-    font
-    size in pixels
-    let
-    scaledFontSize = Math.max(10, Math.min(baseFontSize * (vw / 1500), 24));
+    baseFontSize = 16; // Base font size in pixels
+    let scaledFontSize = Math.max(10, Math.min(baseFontSize * (vw / 1500), 24));
     return scaledFontSize;
     }"""
                         }

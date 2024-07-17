@@ -104,7 +104,7 @@ def draw_your_score(score, low=["Somewhat low", "Your risk is withing the 0th pe
         bg = "rgba(255, 255, 255, 0.9)"
     elif score < 65:
         content = medium
-        color = "yellow"
+        color = "orange"
         bg = "rgba(255, 255, 255, 0.9)"
     else:
         content = high

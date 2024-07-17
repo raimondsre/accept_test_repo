@@ -54,7 +54,12 @@ def generate_annotations(start=0, end=35, color="rgba(0, 255, 0, 0.1)", text=["M
             "color": "black",
             "textAlign": "center",
             "font": {
-                "size": 11,
+                "size": """function(context){
+            let vw =  context.chart.width;
+            let baseFontSize = 16; // Base font size in pixels
+            let scaledFontSize = Math.max(10, Math.min(baseFontSize * (vw / 1200), 24));
+            return scaledFontSize;
+                }""",
                 "weight": "bold",
                 "lineHeight": 1
             }

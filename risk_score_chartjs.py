@@ -168,7 +168,7 @@ def generate_risk_score_chartjs(mean=50, stdDev=15, numPoints=101, score=30, lan
         anotation_low = generate_annotations(-0.5, 35, color="rgba(0, 255, 0, 0.2)",
                                              text=["Mazāk indivīdiem ir", "pazemināts risks"])
 
-        anotation_medium = generate_annotations(35, 65, color="rgba(255, 255, 0, 0.2)",
+        anotation_medium = generate_annotations(35, 65, color="rgba(228, 155, 21, 0.8)",
                                                 text=["Vairumam indivīdu ir", "vidējs risks"])
 
         anotation_high = generate_annotations(65, 100, color="rgba(255, 0, 0, 0.2)",
@@ -183,7 +183,7 @@ def generate_risk_score_chartjs(mean=50, stdDev=15, numPoints=101, score=30, lan
         anotation_low = generate_annotations(-0.5, 35, "rgba(0, 255, 0, 0.2)",
                                              ["Fewer individuals have", "decreased risk"])
 
-        anotation_medium = generate_annotations(35, 65, "rgba(255, 255, 0, 0.2)",
+        anotation_medium = generate_annotations(35, 65, "rgba(228, 155, 21, 0.8)",
                                                 ["Most individuals have", "average risk"])
 
         anotation_high = generate_annotations(65, 100, "rgba(255, 0, 0, 0.2)",

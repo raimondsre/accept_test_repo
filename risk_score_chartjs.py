@@ -58,7 +58,7 @@ def generate_annotations(start=0, end=35, color="rgba(0, 255, 0, 0.1)", text=["M
             let vw =  context.chart.width;
             let devicePixelRatio = window.devicePixelRatio || 1;
             if (devicePixelRatio > 1) {
-              vw = vw * devicePixelRatio;
+              vw = vw * devicePixelRatio * 0.8;
             }
             let baseFontSize = 16; // Base font size in pixels
             let scaledFontSize = Math.max(11, Math.min(baseFontSize * (vw / 1200), 24));
@@ -140,7 +140,7 @@ def draw_your_score(score, low=["c", "Your risk is withing the 0th percentile"],
             let baseFontSize = 16; // Base font size in pixels
             let devicePixelRatio = window.devicePixelRatio || 1;
             if (devicePixelRatio > 1) {
-              vw = vw * devicePixelRatio;
+              vw = vw * devicePixelRatio * 0.8;
             }
             let scaledFontSize = Math.max(11, Math.min(baseFontSize * (vw / 1150), 24));
             return scaledFontSize;
@@ -281,7 +281,7 @@ return gradient;}""",
     baseFontSize = 16; // Base font size in pixels
     let devicePixelRatio = window.devicePixelRatio || 1;
             if (devicePixelRatio > 1) {
-              vw = vw * devicePixelRatio;
+              vw = vw * devicePixelRatio * 0.8;
             }
     let scaledFontSize = Math.max(11, Math.min(baseFontSize * (vw / 1500), 24));
     return scaledFontSize;
@@ -316,7 +316,7 @@ return gradient;}""",
             let baseFontSize = 16; // Base font size in pixels
             let devicePixelRatio = window.devicePixelRatio || 1;
             if (devicePixelRatio > 1) {
-              vw = vw * devicePixelRatio;
+              vw = vw * devicePixelRatio * 0.8;
             }
             let scaledFontSize = Math.max(11, Math.min(baseFontSize * (vw / 1150), 24));
             return scaledFontSize;

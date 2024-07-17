@@ -126,8 +126,8 @@ def draw_your_score(score, low=["c", "Your risk is withing the 0th percentile"],
             "color": color,
             "font": {
                 "size": """
-                function(){
-            let vw = window.innerWidth;
+                function(context){
+            let vw =  context.chart.width;
             let baseFontSize = 16; // Base font size in pixels
             let scaledFontSize = Math.max(10, Math.min(baseFontSize * (vw / 1150), 24));
             return scaledFontSize;
@@ -265,8 +265,8 @@ return gradient;}""",
                         'display': True,
                         'text': x_label,
                         "font": {
-                            "size": """function(){
-                                let vw = window.innerWidth;
+                            "size": """function(context){
+            let vw =  context.chart.width;
     let
     baseFontSize = 16; // Base
     font
@@ -300,8 +300,8 @@ return gradient;}""",
                     'display': True,
                     'text': title,
                     'font': {
-                    "size": """function(){
-            let vw = window.innerWidth;
+                    "size": """function(context){
+            let vw =  context.chart.width;
             let baseFontSize = 16; // Base font size in pixels
             let scaledFontSize = Math.max(10, Math.min(baseFontSize * (vw / 1150), 24));
             return scaledFontSize;

@@ -192,7 +192,7 @@ def generate_risk_score_chartjs(mean=50, stdDev=15, numPoints=101, score=30, lan
         label_medium = ["Medium", "Your risk is withing the " + str(score) + "th percentile"]
         label_high = ["Somewhat high", "Your risk is withing the " + str(score) + "th percentile"]
 
-        anotation_low = generate_annotations(-0.5, 35, "rgba(0, 255, 0, 0.2)",
+        anotation_low = generate_annotations(0, 35, "rgba(0, 255, 0, 0.2)",
                                              ["Fewer individuals have", "decreased risk"])
 
         anotation_medium = generate_annotations(35, 65, "rgba(255, 165, 0, 0.2)",

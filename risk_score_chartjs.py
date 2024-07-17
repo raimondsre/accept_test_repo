@@ -94,7 +94,7 @@ def generate_gradient_colors(total_steps, opacity):
 
 
 # Draw line with your score and label
-def draw_your_score(score, low=["Somewhat low", "Your risk is withing the 0th percentile"],
+def draw_your_score(score, low=["c", "Your risk is withing the 0th percentile"],
                     medium=["Medium", "Your risk is withing the 0th percentile"],
                     high=["Somewhat high", "Your risk is withing the 0th percentile"]):
     global maxY
@@ -125,7 +125,14 @@ def draw_your_score(score, low=["Somewhat low", "Your risk is withing the 0th pe
             "backgroundColor": bg,
             "color": color,
             "font": {
-                "size": 11
+                "size": """
+                function(){
+            let vw = window.innerWidth;
+            let baseFontSize = 16; // Base font size in pixels
+            let scaledFontSize = Math.max(10, Math.min(baseFontSize * (vw / 1150), 24));
+            return scaledFontSize;
+                }
+"""
             },
             "padding": {
                 "top": 5,
@@ -165,10 +172,10 @@ def generate_risk_score_chartjs(mean=50, stdDev=15, numPoints=101, score=30, lan
         label_medium = ["Vidējs", "Jūsu risks ir " + str(score) + " percentiles robežās"]
         label_high = ["Augsts", "Jūsu risks ir " + str(score) + " percentiles robežās"]
 
-        anotation_low = generate_annotations(-0.5, 35, color="rgba(0, 255, 0, 0.2)",
+        anotation_low = generate_annotations(0, 35, color="rgba(0, 255, 0, 0.2)",
                                              text=["Mazāk indivīdiem ir", "pazemināts risks"])
 
-        anotation_medium = generate_annotations(35, 65, color="rgba(228, 155, 21, 0.8)",
+        anotation_medium = generate_annotations(35, 65, color="rgba(255, 165, 0, 0.8)",
                                                 text=["Vairumam indivīdu ir", "vidējs risks"])
 
         anotation_high = generate_annotations(65, 100, color="rgba(255, 0, 0, 0.2)",
@@ -183,7 +190,7 @@ def generate_risk_score_chartjs(mean=50, stdDev=15, numPoints=101, score=30, lan
         anotation_low = generate_annotations(-0.5, 35, "rgba(0, 255, 0, 0.2)",
                                              ["Fewer individuals have", "decreased risk"])
 
-        anotation_medium = generate_annotations(35, 65, "rgba(228, 155, 21, 0.8)",
+        anotation_medium = generate_annotations(35, 65, "rgba(255, 165, 0, 0.2)",
                                                 ["Most individuals have", "average risk"])
 
         anotation_high = generate_annotations(65, 100, "rgba(255, 0, 0, 0.2)",
@@ -193,7 +200,7 @@ def generate_risk_score_chartjs(mean=50, stdDev=15, numPoints=101, score=30, lan
     config = {
         'type': 'bar',  # Base type
         'data': {
-            'labels': [d['x'] for d in normal_data],
+            'labels': "(function(){return Array.from({ length: 101 }, (_, i) => i)}())",
             'datasets': [
                 # Normal distribution line
                 {
@@ -206,15 +213,45 @@ def generate_risk_score_chartjs(mean=50, stdDev=15, numPoints=101, score=30, lan
                     'pointRadius': 0,
                     'tension': 0.4  # Smooth the line
                 },
-                # Gradient bar charts
+                # Gradient line
                 {
-                    'type': 'bar',
-                    # 'data': [d['y'] for d in bar_data],
-                    'data': bar_data,
-                    'backgroundColor': bgs,
-                    'borderWidth': 0,  # Remove the border
-                    'barPercentage': 0.9999,  # Slightly less than 1.0 to avoid overlap and gaps
-                    'categoryPercentage': 0.9999,  # Slightly less than 1.0 to avoid overlap and gaps
+                    "type": "line",
+                    "data": "(function(){return Array(101).fill(-0.001064)}())",
+                    "borderColor": "red",
+                    "borderWidth": 0,
+                    "fill": "origin",
+                    "backgroundColor": """function(context) {
+                    const chart = context.chart;
+    const
+    {ctx, chartArea} = chart;
+
+    if (!chartArea) {
+    // This case happens on initial chart load
+    return;
+    }
+    let
+    width, height, gradient;
+
+    const
+    chartWidth = chartArea.right - chartArea.left;
+    const
+    chartHeight = chartArea.bottom - chartArea.top;
+    if (!gradient | | width != = chartWidth | | height != = chartHeight) {
+
+
+width = chartWidth;
+height = chartHeight;
+gradient = ctx.createLinearGradient(chartArea.left, 0, chartArea.right, 0);
+gradient.addColorStop(0, 'rgba(0, 255, 0, 0.7)'); // Start
+color(green)
+gradient.addColorStop(0.5, 'rgba(255, 255, 0, 0.7)'); // Middle
+color(yellow)
+gradient.addColorStop(1, 'rgba(255, 0, 0, 0.7)'); // End
+color(red)
+}
+return gradient;}""",
+                    "pointRadius": 0,
+                    "tension": 0.4
                 }
             ]
         },
@@ -226,7 +263,19 @@ def generate_risk_score_chartjs(mean=50, stdDev=15, numPoints=101, score=30, lan
                     'position': 'bottom',
                     'title': {
                         'display': True,
-                        'text': x_label
+                        'text': x_label,
+                        "font": {
+                            "size": """function(){
+                                let vw = window.innerWidth;
+    let
+    baseFontSize = 16; // Base
+    font
+    size in pixels
+    let
+    scaledFontSize = Math.max(10, Math.min(baseFontSize * (vw / 1500), 24));
+    return scaledFontSize;
+    }"""
+                        }
                     },
                     'ticks': {
                         'min': 0,  # Ensure the x-axis starts at 0
@@ -251,8 +300,13 @@ def generate_risk_score_chartjs(mean=50, stdDev=15, numPoints=101, score=30, lan
                     'display': True,
                     'text': title,
                     'font': {
-                        'size': 16,
-                        'weight': 'bold'
+                    "size": """function(){
+            let vw = window.innerWidth;
+            let baseFontSize = 16; // Base font size in pixels
+            let scaledFontSize = Math.max(10, Math.min(baseFontSize * (vw / 1150), 24));
+            return scaledFontSize;
+                }""",
+                        "weight": "bold"
                     },
                     'color': '#000',
                     'padding': 10

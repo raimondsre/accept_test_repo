@@ -189,7 +189,7 @@ def generate_risk_score_chartjs(mean=50, stdDev=15, numPoints=101, score=30, lan
                                              text=["Mazāk indivīdiem", "ir", "pazemināts risks"])
 
         anotation_medium = generate_annotations(35, 65, color="rgba(255, 165, 0, 0.8)",
-                                                text=["Vairumam indivīdu ir", "vidējs risks"])
+                                                text=["Vairumam indivīdu", "ir", "vidējs risks"])
 
         anotation_high = generate_annotations(65, 100, color="rgba(255, 0, 0, 0.2)",
                                               text=["Mazāk indivīdiem", "ir", "augsts risks"])
@@ -201,13 +201,13 @@ def generate_risk_score_chartjs(mean=50, stdDev=15, numPoints=101, score=30, lan
         label_high = ["Somewhat high", "Your risk is withing the " + str(score) + "th percentile"]
 
         anotation_low = generate_annotations(0, 35, "rgba(0, 255, 0, 0.2)",
-                                             ["Fewer individuals have", "decreased risk"])
+                                             ["Fewer individuals", "have", "decreased risk"])
 
         anotation_medium = generate_annotations(35, 65, "rgba(255, 165, 0, 0.2)",
-                                                ["Most individuals have", "average risk"])
+                                                ["Most individuals", "have", "average risk"])
 
         anotation_high = generate_annotations(65, 100, "rgba(255, 0, 0, 0.2)",
-                                              ["Fewer individuals have", "high risk"])
+                                              ["Fewer individuals", "have", "high risk"])
         x_label = 'Percentile'
     # Create the Chart.js configuration
     config = {

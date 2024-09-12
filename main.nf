@@ -23,7 +23,7 @@ process writeToFile {
 
 process demo {
     executor = 'local'
-//     maxForks = 2
+//     maxForks = 3
 
     output:
     stdout
